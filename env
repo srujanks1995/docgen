@@ -1,0 +1,33 @@
+# Do not commit real values; this file is listed in .gitignore.
+
+# Choose LLM source:
+# - api   : Google Gemini via API key (default)
+# - local : run a local command that returns generated text
+DOCGEN_LLM_SOURCE=api
+
+# -----------------------------
+# API (Gemini) configuration
+# -----------------------------
+# Google AI Studio: https://aistudio.google.com/apikey
+GEMINI_API_KEY=
+
+# Optional (defaults shown)
+# GEMINI_MODEL=gemini-2.0-flash
+# GEMINI_API_BASE=https://generativelanguage.googleapis.com/v1beta
+
+# Also accepted: GOOGLE_API_KEY= or GENAI_API_KEY=
+
+# -----------------------------
+# Local LLM configuration
+# -----------------------------
+# DOCGEN_LOCAL_LLM_COMMAND is a command line that reads a JSON request from stdin and prints text to stdout.
+# It receives environment variables DOCGEN_LOCAL_MODEL_PATH and DOCGEN_LOCAL_ADAPTER_PATH (if set).
+#
+# Example (python script):
+# DOCGEN_LLM_SOURCE=local
+# DOCGEN_LOCAL_LLM_COMMAND=python tools/local_llm_runner.py
+# DOCGEN_LOCAL_MODEL_PATH=C:\models\my-model.gguf
+# DOCGEN_LOCAL_ADAPTER_PATH=C:\models\my-adapter.safetensors
+DOCGEN_LOCAL_LLM_COMMAND=
+DOCGEN_LOCAL_MODEL_PATH=
+DOCGEN_LOCAL_ADAPTER_PATH=
