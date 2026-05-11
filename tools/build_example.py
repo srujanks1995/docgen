@@ -13,6 +13,7 @@ import zipfile
 from pathlib import Path
 
 import pandas as pd
+from docx import Document
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,6 +74,14 @@ def main() -> None:
     images = BUNDLE / "images"
     for d in (content, tables, images):
         d.mkdir(parents=True, exist_ok=True)
+
+    # Word template with header/footer (used by docgen when ZIP has exactly one .docx)
+    tmpl = BUNDLE / "template.docx"
+    tdoc = Document()
+    sec = tdoc.sections[0]
+    sec.header.paragraphs[0].text = "Example header — docgen template"
+    sec.footer.paragraphs[0].text = "Example footer — page { PAGE }"
+    tdoc.save(str(tmpl))
 
     (content / "intro.txt").write_text(_long_text("Introduction"), encoding="utf-8")
     (content / "scope.txt").write_text(_long_text("Scope narrative"), encoding="utf-8")

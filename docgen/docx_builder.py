@@ -244,7 +244,14 @@ def build_docx(
     fig_bm = {f.label: f.bookmark for f in figures}
     tbl_bm = {t.label: t.bookmark for t in tables}
 
-    doc = Document()
+    template = bundle.find_template_docx()
+    doc = Document(str(template)) if template else Document()
+    # Remove any template body content but keep section properties (header/footer live there).
+    body = doc._element.body
+    for child in list(body):
+        if child.tag.endswith("}sectPr"):
+            continue
+        body.remove(child)
     style = doc.styles["Normal"]
     style.font.name = "Calibri"
     style.font.size = Pt(11)

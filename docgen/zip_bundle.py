@@ -34,6 +34,18 @@ class ZipBundle:
             raise ValueError("Root JSON must be an object (dictionary).")
         return cls(tmp, data)
 
+    def find_template_docx(self) -> Path | None:
+        """Return the only .docx in the ZIP, if exactly one exists.
+
+        Assumption (per project convention): user provides a single Word template in the ZIP
+        which contains the desired header/footer. If multiple .docx files exist, callers
+        must disambiguate at a higher level (e.g., math snippets).
+        """
+        docxs = list(self.root.rglob("*.docx"))
+        if len(docxs) == 1:
+            return docxs[0]
+        return None
+
     def resolve(self, rel: str) -> Path:
         """Resolve a path relative to ZIP root (POSIX or OS separators)."""
         rel_norm = rel.replace("\\", "/").lstrip("/")

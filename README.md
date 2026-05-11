@@ -6,6 +6,10 @@ Generate a Word report (`.docx`) from:
 
 The generator also writes **`llm_out.txt`** (prompt + inputs + responses) next to the output document by default.
 
+## Word template (header/footer)
+
+If the ZIP bundle contains **exactly one `.docx` file**, `docgen` uses it as the **base template** (so the report keeps the template’s **header and footer**). Any body content inside the template is cleared before writing the generated report content.
+
 ## How to run (example report ~10 pages)
 
 From the repo root:
