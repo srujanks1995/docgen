@@ -1,0 +1,109 @@
+title: Example Evidence Report (~10 pages)
+sections:
+  - number: "1"
+    Section_name: Introduction
+    elements:
+      - kind: paragraph_file
+        text_path: content/intro.txt
+      - kind: image
+        img_path: images/fig_context.png
+        img_name: System context (example)
+      - kind: table
+        csv_path: tables/scope_items.csv
+        table_name: Scope line items
+      - kind: paragraph
+        para_prompt: >-
+          Write six to nine sentences for an executive introduction. Reference Figure 1
+          and Table 1 using those exact labels. Ground claims only in the JSON facts.
+        para_input_from_json: intro_llm
+    sections:
+      - number: "1.1"
+        Section_name: Objectives
+        elements:
+          - kind: paragraph
+            para_prompt: >-
+              Write five to eight sentences stating measurable objectives and success criteria.
+              Use only the JSON facts; cite Table 1 (scope line items) if it helps.
+            para_input_from_json: objectives_llm
+  - number: "2"
+    Section_name: Scope and boundaries
+    elements:
+      - kind: paragraph_file
+        text_path: content/scope.txt
+      - kind: paragraph
+        para_prompt: >-
+          Write five to eight sentences clarifying in-scope versus out-of-scope work.
+          Mention Table 2 where appropriate.
+        para_input_from_json: scope_llm
+      - kind: table
+        csv_path: tables/stakeholders.csv
+        table_name: Stakeholder matrix
+  - number: "3"
+    Section_name: Standards and controls
+    elements:
+      - kind: paragraph_file
+        text_path: content/standards.txt
+      - kind: table
+        csv_path: tables/milestones.csv
+        table_name: Milestone schedule
+      - kind: image
+        img_path: images/fig_controls.png
+        img_name: Control flow (example)
+  - number: "4"
+    Section_name: Methodology
+    elements:
+      - kind: paragraph_file
+        text_path: content/methodology.txt
+      - kind: paragraph
+        para_prompt: >-
+          Write six to nine sentences describing methodology, data handling, and validation.
+          Reference Table 4 when discussing the program inventory.
+        para_input_from_json: methodology_llm
+      - kind: table
+        csv_path: tables/program_inventory.csv
+        table_name: Program inventory
+    sections:
+      - number: "4.1"
+        Section_name: Quality checks
+        elements:
+          - kind: table
+            csv_path: tables/quality_checks.csv
+            table_name: Data quality checks
+          - kind: image
+            img_path: images/fig_metrics.png
+            img_name: Metrics overview (example)
+  - number: "5"
+    Section_name: Results
+    elements:
+      - kind: paragraph
+        para_prompt: >-
+          Write seven to ten sentences summarizing quantitative results. Cite Figure 3
+          and Table 5 explicitly.
+        para_input_from_json: results_llm
+      - kind: image
+        img_path: images/fig_summary.png
+        img_name: Summary dashboard (example)
+  - number: "6"
+    Section_name: Discussion
+    elements:
+      - kind: paragraph_file
+        text_path: content/discussion.txt
+      - kind: paragraph
+        para_prompt: >-
+          Write six to nine sentences interpreting results and risks. Stay within JSON facts.
+        para_input_from_json: discussion_llm
+  - number: "7"
+    Section_name: Limitations
+    elements:
+      - kind: paragraph
+        para_prompt: >-
+          Write five to seven sentences on limitations and mitigations. Use only JSON facts.
+        para_input_from_json: limitations_llm
+  - number: "8"
+    Section_name: Conclusion
+    elements:
+      - kind: paragraph
+        para_prompt: >-
+          Write six to nine sentences with conclusions and readiness. Reference Figure 4
+          where appropriate.
+        para_input_from_json: conclusion_llm

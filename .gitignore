@@ -1,0 +1,10 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+example/bundle/
+example/report.zip
+example/report.docx
+example/llm_out.txt
