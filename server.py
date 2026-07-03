@@ -284,12 +284,7 @@ h1 em{color:#6c63ff;font-style:normal}
            background:rgba(108,99,255,.12);display:inline-block;
            padding:3px 10px;border-radius:6px;color:#c4b5fd}
 
-.yaml-badge{display:inline-flex;align-items:center;gap:6px;
-             background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.25);
-             border-radius:6px;padding:6px 12px;font-size:.82rem;color:#c4b5fd;
-             font-family:monospace}
-.yaml-badge .badge-label{color:#475569;font-family:-apple-system,sans-serif;font-size:.75rem;
-             font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+
 
 button{width:100%;padding:12px;background:#6c63ff;border:none;border-radius:8px;
        color:#fff;font-size:.95rem;font-weight:600;cursor:pointer;transition:.18s}
@@ -335,13 +330,6 @@ button:disabled{opacity:.4;cursor:not-allowed}
       <div class="drop-file" id="fname" style="display:none"></div>
     </div>
 
-    <div id="yamlBadgeWrap" style="display:none">
-      <div class="yaml-badge">
-        <span class="badge-label">Template</span>
-        <span id="yamlBadgeTxt">—</span>
-      </div>
-    </div>
-
     <button id="runBtn" disabled>Generate Report</button>
   </div>
 
@@ -360,8 +348,6 @@ const fileIn       = document.getElementById('fileIn');
 const drop         = document.getElementById('drop');
 const fname        = document.getElementById('fname');
 const runBtn       = document.getElementById('runBtn');
-const yamlBadgeWrap= document.getElementById('yamlBadgeWrap');
-const yamlBadgeTxt = document.getElementById('yamlBadgeTxt');
 const prog         = document.getElementById('prog');
 const dot       = document.getElementById('dot');
 const statusTxt = document.getElementById('statusTxt');
@@ -394,9 +380,6 @@ function setFile(f) {
   if (!f) return;
   fname.textContent = f.name;
   fname.style.display = 'inline-block';
-  const yaml = inferYaml(f.name);
-  yamlBadgeTxt.textContent = yaml + '.yaml';
-  yamlBadgeWrap.style.display = 'block';
   runBtn.disabled = false;
 }
 fileIn.addEventListener('change', () => setFile(fileIn.files[0]));
